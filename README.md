@@ -1,4 +1,4 @@
-ببین درست زدم # GW IDE
+# GW ide
 
 Clean. Fast. Lightweight.
 
