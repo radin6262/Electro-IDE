@@ -1,6 +1,6 @@
-# GW IDE
+ببین درست زدم # GW IDE
 
-**Clean. Fast. Lightweight.**
+Clean. Fast. Lightweight.
 
 GW IDE is a minimalist, extensible desktop IDE Built with PySide6.
 
