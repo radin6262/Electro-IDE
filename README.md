@@ -10,7 +10,7 @@ GW IDE is a minimalist, extensible desktop IDE Built with PySide6.
 
 how to setup source code:
 - Go download the source code
-- run <pre>pip install platform pyside6 requests getpass packaging</pre> in cmd
+- run <pre>pip install pyside6 requests packaging</pre> in cmd
 - run main.py
 ### Required Library:
 - platform
