@@ -22,7 +22,7 @@ UPDATE_TEMP_DIR = "temp_update_download" # Temporary folder to extract the new s
 UPDATE_TARGET_DIR = os.getcwd()          # The directory where new files should be placed (current directory)
 
 # URL for fetching the remote package.json
-PACKAGE_JSON_URL = "https://raw.githubusercontent.com/IamAbolfazlGameMaker/GW-IDE/main/packages.json"
+PACKAGE_JSON_URL = "https://raw.githubusercontent.com/IamAbolfazlGameMaker/GW-IDE/refs/heads/main/packages.json"
 
 SOURCE_CODE_ZIP_URL = "https://github.com/IamAbolfazlGameMaker/GW-IDE/archive/refs/heads/main.zip"
 # ---------------------
