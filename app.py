@@ -357,7 +357,7 @@ class GW(QMainWindow):
         QCoreApplication.setApplicationName("GW IDE")
 
         # Use the global constant
-        self.setWindowTitle(f"GW IDE - BETA EDITION - v{CURRENT_VERSION}") 
+        self.setWindowTitle(f"GW IDE - v{CURRENT_VERSION}") 
         self.setGeometry(100, 100, 1400, 900) 
         self.settings = load_settings()
         self.autosave_enabled = self.settings.get("autosave", False)
