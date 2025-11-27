@@ -10,7 +10,7 @@ import subprocess
 # --- CONFIGURATION ---
 # The current version of your application installed locally.
 # This should match the version in your current (local) package.json or similar file.
-CURRENT_VERSION = "1.0.1.5"
+CURRENT_VERSION = "1.0.2"
 
 # GitHub Repository Details
 # GITHUB_OWNER = "YourGitHubUsername"      # e.g., "google"
@@ -51,21 +51,6 @@ def get_remote_version():
         print("Error: Could not decode JSON from remote package.json.")
         return None
 
-def run_main_app(app_file="app.py"):
-    """
-    Launches the main app in a new PowerShell window and exits the updater.
-    """
-    if os.path.exists(app_file):
-        subprocess.Popen([
-            "powershell",
-            "-NoExit",  # optional: keep the PowerShell window open
-            "-Command",
-            f'python "{os.path.abspath(app_file)}"'
-        ])
-        print(f"Main app '{app_file}' launched. Exiting updater...")
-        sys.exit(0)
-    else:
-        print(f"Cannot run '{app_file}', file not found.")
 def download_and_extract_update(remote_version):
     """Downloads the source code zip and extracts it."""
     print(f"\n-> Downloading source code for version {remote_version}...")
@@ -178,7 +163,7 @@ def main():
         print("Local version is up-to-date. No update needed.")
 
     print("\n--- Auto-Updater Finished ---")
-    run_main_app()
+    
 
 if __name__ == "__main__":
     # Ensure necessary libraries are available.

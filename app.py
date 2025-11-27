@@ -31,7 +31,7 @@ class GW(QMainWindow):
         super().__init__()
         QCoreApplication.setApplicationName("GW IDE")
 
-        self.setWindowTitle("GW IDE - BETA EDITION - v1.0.1.5")
+        self.setWindowTitle("GW IDE - BETA EDITION - v1.0.2")
         self.setGeometry(100, 100, 1400, 900) 
         self.settings = load_settings()
         self.autosave_enabled = self.settings.get("autosave", False)
