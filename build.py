@@ -10,7 +10,6 @@ ICON_FILE = "icon.ico"         # Put your .ico in project folder
 
 ADDITIONAL_DATA = [
 ]
-
 # Build the --add-data arguments
 data_args = []
 for src, dest in ADDITIONAL_DATA:
@@ -26,13 +25,13 @@ PyInstaller.__main__.run([
     "--onefile",
     "--windowed",                     # Remove this if you DO want console
     f"--icon={ICON_FILE}",
-
     # 🔥 FIX: Include the Python standard library
     "--hidden-import=encodings",
     "--hidden-import=codecs",
     "--hidden-import=importlib",
     "--hidden-import=importlib._bootstrap",
     "--hidden-import=importlib._bootstrap_external",
+    "--hidden-import=ctypes",
 ] + [
     f"--add-data={d}" for d in data_args
 ])
