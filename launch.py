@@ -22,4 +22,4 @@ def restart_as_admin():
 
 restart_as_admin()
 
-subprocess.Popen(['pythonw', 'main.py'])
+subprocess.Popen(['pythonw', 'app.py'])

@@ -21,10 +21,10 @@ from PySide6.QtCore import (
     QRunnable, QThreadPool, QObject, Slot, QUrl
 )
 import ctypes
-# --- CONFIGURATION (Moved from original updater script) ---
+# --- CONFIGURATION ---
 CURRENT_VERSION = "1.0.2.5"
-PACKAGE_JSON_URL = "https://raw.githubusercontent.com/IamAbolfazlGameMaker/GW-IDE/refs/heads/main/packages.json"
-SOURCE_CODE_ZIP_URL = "https://github.com/IamAbolfazlGameMaker/GW-IDE/archive/refs/heads/main.zip"
+PACKAGE_JSON_URL = "https://raw.githubusercontent.com/radin6262/Electro-IDE/refs/heads/main/packages.json"
+SOURCE_CODE_ZIP_URL = "https://github.com/radin6262/Electro-IDE/archive/refs/heads/main.zip"
 UPDATE_TEMP_DIR = "temp_update_download"
 UPDATE_TARGET_DIR = os.getcwd()
 # -----------------------------------------------------------
@@ -195,7 +195,7 @@ class UpdateWorker(QRunnable):
             shutil.rmtree(UPDATE_TEMP_DIR)
             
             # Request app restart
-            self.signals.result.emit(True, "Update complete! Please restart GW IDE to finalize the changes.")
+            self.signals.result.emit(True, "Update complete! Please restart Electro IDE to finalize the changes.")
 
         except Exception as e:
             self.signals.progress.emit("Update failed. (0%)")
@@ -208,7 +208,7 @@ class UpdateWorker(QRunnable):
 class UpdateCheckerDialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setWindowTitle("GW IDE Update Checker")
+        self.setWindowTitle("Electro IDE Update Checker")
         self.setMinimumWidth(400)
         self.setModal(True)
         
@@ -354,16 +354,16 @@ class UpdateCheckerDialog(QDialog):
             self.update_button.setText("Update Failed")
             QMessageBox.critical(self, "Update Failed", message)
 
-# --- 💻 GW IDE Main Window ---
+# --- Electro IDE Main Window ---
 
-class GW(QMainWindow):
+class Electro(QMainWindow):
 
     def __init__(self):
         super().__init__()
-        QCoreApplication.setApplicationName("GW IDE")
+        QCoreApplication.setApplicationName("Electro IDE")
 
         # Use the global constant
-        self.setWindowTitle(f"GW IDE - v{CURRENT_VERSION}") 
+        self.setWindowTitle(f"Electro IDE - v{CURRENT_VERSION}") 
         self.setGeometry(100, 100, 1400, 900) 
         self.settings = load_settings()
         self.autosave_enabled = self.settings.get("autosave", False)
@@ -403,7 +403,7 @@ class GW(QMainWindow):
         self.status_bar.addPermanentWidget(self.lang_label)
         self.status_bar.addPermanentWidget(self.encoding_label)
 
-        self.status_bar.showMessage("Ready. Welcome to GW IDE!")
+        self.status_bar.showMessage("Ready. Welcome to Electro IDE!")
 
     # 🎨 UI Initialization 
     def init_ui(self):
@@ -462,7 +462,7 @@ class GW(QMainWindow):
 
     # 🎨 Menu Bar 
     def _connect_active_editor_signals(self, index):
-        """Connects the active CodeEditorCore's signals to the GW methods."""
+        """Connects the active CodeEditorCore's signals to the Electro methods."""
         editor = self.editor.get_current_editor()
         
         # Disconnect previous connections if any, to prevent multiple updates
@@ -724,7 +724,7 @@ class GW(QMainWindow):
                 self.file_manager.set_root_path(folder_path)
             
                 self.current_project_name = QFileInfo(folder_path).fileName()
-                self.setWindowTitle(f"GW IDE - Project: {self.current_project_name}")
+                self.setWindowTitle(f"Electro IDE - Project: {self.current_project_name}")
                 self.status_bar.showMessage(f"Project folder opened: {folder_path}", 5000)
             except Exception as e:
                 QMessageBox.critical(self, "Folder Error", f"Failed to set project folder: {e}")
@@ -934,6 +934,6 @@ if __name__ == "__main__":
         sys.exit(1) # Exit if dependencies are missing
 
     app = QApplication(sys.argv)
-    window = GW()
+    window = Electro()
     window.show()
     sys.exit(app.exec())
